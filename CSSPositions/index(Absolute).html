@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Absolute Position</title>
+<style>
+    .absolute-position {
+        position: relative;
+    }
+
+    .parent {
+        position: relative;
+        height: 200px;
+        background-color: red;
+        font-size: 2rem;
+        font-weight: bold;
+    }
+
+    .child {
+        position:absolute;
+        top: 50px;
+        left: 50px;
+        background-color: black;
+        color: white;
+        font-weight: bold;
+        width:100px;
+        text-align: center;
+        
+    }
+
+</style>
+</head>
+<body>
+    <div class="absolute-position">
+        <div class="parent">Parent</div>
+        <div class="child">Child</div>
+    </div>
+</body>
+</html>
