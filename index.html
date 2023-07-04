@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Registration Form</title>
+    <style>
+        .error {
+            color: red;
+        }
+        body{
+            background-color: black;
+        }
+        #registrationForm{
+            height: 500px;
+            display: flex;
+            border: 2px solid red;
+            background-color: grey;
+            line-height: 2rem;
+            font-weight: bold;
+            flex-direction: column;
+            font-size: 20px;
+            justify-content:flex-start;
+            align-items: center;
+            padding-top: 5rem;
+        }
+        h1{
+            text-align: center;
+            color: aliceblue;
+        }
+        #button{
+            margin: 10px;
+            padding: 10px;
+            background-color: green;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            border-radius: 17px;
+        }
+        label{
+            width: 100px;
+            display: inline-block;
+        }
+        input,select{
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Registration Form</h1>
+    <form id="registrationForm">
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <div>
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" min="18" max="100" required>
+        </div>
+        <div>
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="">Select</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+        <div>
+            <label for="date">Date:</label>
+            <input type="date" id="date" name="date" required>
+        </div>
+        <div>
+            <label for="color">Favorite Color:</label>
+            <input type="color" id="color" name="color" required>
+        </div>
+        <div>
+            <input type="submit" id="button" value="Submit">
+        </div>
+    </form>
+
+    <script>
+        document.getElementById("registrationForm").addEventListener("submit", function (event) {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var phone = document.getElementById("phone").value;
+            var password = document.getElementById("password").value;
+            var age = document.getElementById("age").value;
+            var gender = document.getElementById("gender").value;
+            var date = document.getElementById("date").value;
+            var color = document.getElementById("color").value;
+
+            var errorMessages = [];
+
+            if (!name) {
+                errorMessages.push("Name is required.");
+            }
+
+            if (!email) {
+                errorMessages.push("Email is required.");
+            } else if (!isValidEmail(email)) {
+                errorMessages.push("Invalid email format.");
+            }
+
+            if (!phone) {
+                errorMessages.push("Phone number is required.");
+            } else if (!isValidPhoneNumber(phone)) {
+                errorMessages.push("Invalid phone number format.");
+            }
+
+            if (!password) {
+                errorMessages.push("Password is required.");
+            } else if (password.length < 8) {
+                errorMessages.push("Password must be at least 8 characters long.");
+            }
+
+            if (!age) {
+                errorMessages.push("Age is required.");
+            } else if (age < 18 || age > 100) {
+                errorMessages.push("Age must be between 18 and 100.");
+            }
+
+            if (!gender) {
+                errorMessages.push("Gender is required.");
+            }
+
+            if (!date) {
+                errorMessages.push("Date is required.");
+            }
+
+            if (!color) {
+                errorMessages.push("Favorite color is required.");
+            }
+
+            if (errorMessages.length > 0) {
+                event.preventDefault(); // Prevent form submission
+                displayErrors(errorMessages);
+            }
+        });
+
+        function isValidEmail(email) {
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        function isValidPhoneNumber(phone) {
+            var phoneRegex = /^\d{10}$/;
+            return phoneRegex.test(phone);
+        }
+
+        function displayErrors(errors) {
+            var errorContainer = document.createElement("div");
+            errorContainer.className = "error";
+            errorContainer.innerHTML = "<p><strong>Error:</strong></p>";
+
+            var errorList = document.createElement("ul");
+            errors.forEach(function (error) {
+                var listItem = document.createElement("li");
+                listItem.innerText = error;
+                errorList.appendChild(listItem);
+            });
+
+            errorContainer.appendChild(errorList);
+
+            var form = document.getElementById("registrationForm");
+            form.parentNode.insertBefore(errorContainer, form);
+        }
+    </script>
+</body>
+
+</html>
