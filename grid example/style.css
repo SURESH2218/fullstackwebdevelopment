@@ -1,0 +1,44 @@
+.main1 {
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(2, 1fr);
+  height: 100vh;
+  width: 29%;
+  margin: auto;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: repeat(2, 155px);
+  gap: 10px;
+  grid-template-columns: repeat(2, 155px);
+}
+.second {
+  display: grid;
+  grid-template-columns: 100px;
+  grid-template-rows: repeat(3, 100px);
+  gap: 10px;
+}
+.class {
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.item-3 {
+  grid-column: 1/3;
+}
+.image {
+  object-fit: cover;
+  height: 155px;
+  width: 100%;
+}
+.image3 {
+  object-fit: cover;
+  height: 155px;
+  width: 100%;
+}
+.grid2 {
+  object-fit: cover;
+  height: 100px;
+  width: 100px;
+}
