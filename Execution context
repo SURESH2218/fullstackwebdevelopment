@@ -1,0 +1,30 @@
+Execution Context:
+It includes various components that determine how the code is executed and what variables and functions are accessible at a given point in time. Understanding execution contexts is crucial for understanding how programs run and how variables and functions are scoped
+         Execution Context
+____________________________________
+|                                    |
+|  Variable Environment              |
+|  (Variables and functions)         |
+|____________________________________|
+|                                    |
+|  Scope Chain                       |
+|  (Outer environments' references)  |
+|____________________________________|
+|                                    |
+|  This Value                        |
+|  (Reference to the current object) |
+|____________________________________|
+|                                    |
+|  Code Execution                    |
+|____________________________________|
+
+Variable Environment: The variable environment component of an execution context consists of all the declared variables and functions within the current scope. It keeps track of the identifiers and their associated values that are accessible from the code being executed. This includes function arguments, local variables, and function declarations. The variable environment provides a mapping between identifiers and their corresponding values.
+
+
+Scope Chain: The scope chain represents the hierarchy of variable environments in nested scopes. It is essentially a list of references to the variable environments of outer scopes. When a variable is referenced, the JavaScript engine searches for it sequentially in the variable environment of the current execution context and then in the outer environments referenced by the scope chain. This allows for variable visibility and access across different scopes.
+
+
+This Value: The "this" value refers to the object that is currently being operated upon. It provides a reference to the context in which a function is called. The value of "this" is determined by the way in which a function is invoked and can change dynamically. It can refer to the global object (e.g., "window" in a browser), the object that owns the method being called, or it can be explicitly set using functions like "bind", "call", or "apply".
+Code Execution: The code execution component represents the actual execution of the code within the execution context. It involves interpreting and executing the statements line by line, updating variable values, invoking functions, and performing any other necessary operations.
+These components work together to create and manage the execution context during the execution of a program. As the program executes, the JavaScript engine creates new execution contexts for each function call and adds them to the execution stack (known as the call stack). When a function completes its execution, its execution context is removed from the stack, and control returns to the previous execution context.
+It's important to note that the diagram provided is a simplified representation of an execution context, and there may be additional internal components and optimizations depending on the specific JavaScript engine or runtime environment being used
