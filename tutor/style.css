@@ -1,0 +1,23 @@
+.main {
+  width: 31%;
+  margin: auto;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form {
+  line-height: 0px;
+}
+.leftSide img {
+  height: 150px;
+}
+button {
+  margin-top: 2rem;
+  margin-left: 0.5rem;
+}
+.under {
+  text-decoration: underline;
+  color: rgb(113, 18, 113) 00;
+}
